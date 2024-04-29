@@ -1,7 +1,80 @@
-.App {
-  text-align: center;
+.to-do-wrapper {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
 
   h1 {
-    color: red;
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .field {
+    width: 591px;
+    height: 74px;
+    background-color: #ffffff;
+    border-radius: 1em;
+    border: solid 1.6px #d9d9d9;
+
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+
+    h2 {
+      color: #d9d9d9;
+    }
+  }
+
+  .to-do-item-wrapper {
+    margin-top: 20px;
+  }
+
+  .to-do-item {
+    margin-top: 20px;
+    width: 594px;
+    height: 106px;
+    background-color: #6034e4;
+    border-radius: 1em;
+    cursor: pointer;
+
+    display: flex;
+    align-content: center;
+    padding-left: 30px;
+
+    .to-do-item-flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      h2 {
+        width: 530px;
+        color: white;
+      }
+
+      .trash-icon:hover g path {
+        stroke: #FCA0FF;
+        transition: all 0ms ease-in-out;
+      }
+
+      .trash-icon:hover g line {
+        stroke: #FCA0FF;
+        transition: all 0ms ease-in-out;
+      }
+
+      .trash-icon:hover g polyline {
+        stroke: #FCA0FF;
+        transition: all 0ms ease-in-out;
+      }
+    }
+  }
+
+  .to-do-item-completed {
+    background-color: #c7b5ff;
+    text-decoration-line: line-through;
+  }
+
+  .h1-add-new-item {
+    margin-top: 60px;
   }
 }
