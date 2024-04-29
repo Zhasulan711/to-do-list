@@ -1,11 +1,11 @@
-.to-do-wrapper {
+.to-do-list-wrapper {
   margin-top: 100px;
   display: flex;
   flex-direction: column;
 
   h1 {
     color: black;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
   }
@@ -21,8 +21,8 @@
     align-items: center;
     padding-left: 30px;
 
-    h2 {
-      color: #d9d9d9;
+    &:focus-within {
+      border: solid 1.6px #6034e4;
     }
   }
 
@@ -41,40 +41,58 @@
     display: flex;
     align-content: center;
     padding-left: 30px;
-
-    .to-do-item-flex {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      h2 {
-        width: 530px;
-        color: white;
-      }
-
-      .trash-icon:hover g path {
-        stroke: #FCA0FF;
-        transition: all 0ms ease-in-out;
-      }
-
-      .trash-icon:hover g line {
-        stroke: #FCA0FF;
-        transition: all 0ms ease-in-out;
-      }
-
-      .trash-icon:hover g polyline {
-        stroke: #FCA0FF;
-        transition: all 0ms ease-in-out;
-      }
-    }
   }
 
   .to-do-item-completed {
     background-color: #c7b5ff;
+    margin-top: 20px;
+    width: 594px;
+    height: 106px;
+    border-radius: 1em;
+    cursor: pointer;
+
     text-decoration-line: line-through;
+    text-decoration-color: white;
+    display: flex;
+    align-content: center;
+    padding-left: 30px;
+  }
+
+  .to-do-item-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  
+    h2 {
+      width: 530px;
+      color: white;
+    }
+  
+    .trash-icon:hover g path {
+      stroke: #fca0ff;
+      transition: all 0ms ease-in-out;
+    }
+  
+    .trash-icon:hover g line {
+      stroke: #fca0ff;
+      transition: all 0ms ease-in-out;
+    }
+  
+    .trash-icon:hover g polyline {
+      stroke: #fca0ff;
+      transition: all 0ms ease-in-out;
+    }
   }
 
   .h1-add-new-item {
     margin-top: 60px;
   }
+
+  input {
+    width: 560px;
+    border: transparent;
+    outline: none;
+    font-size: 24px;
+  }
 }
+
