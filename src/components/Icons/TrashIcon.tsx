@@ -5,8 +5,15 @@ import { DefaultIconComponentProps } from "../../types/DefaultIconComponentProps
 export const TrashIcon: FC<DefaultIconComponentProps> = ({
   width = 34,
   height = 34,
+  onClick,
 }) => {
   const viewBox = `0 0 16 16`;
+
+  const handleClick = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+    if (onClick) {
+      onClick(e);
+    }
+  };
 
   return (
     <svg
@@ -18,6 +25,7 @@ export const TrashIcon: FC<DefaultIconComponentProps> = ({
       height={height}
       viewBox={viewBox}
       className="trash-icon"
+      onClick={handleClick}
     >
       <g transform="translate(0, 0)">
         <path
