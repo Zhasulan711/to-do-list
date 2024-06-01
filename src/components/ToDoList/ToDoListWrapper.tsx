@@ -4,7 +4,7 @@ import "../../styles/root/ToDoList.scss";
 
 import { SearchText } from "./SearchText";
 import { AddNewItem } from "./AddNewItem";
-import { ToDoItemWrapper } from "./TodoItemWrapper";
+import { ToDoItemWrapper } from "./ToDoItemWrapper";
 
 export const ToDoListWrapper = () => {
   const [items, setItems] = useState<string[]>(["Swimming pool"]);

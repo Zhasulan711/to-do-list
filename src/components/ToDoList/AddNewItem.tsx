@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import { AddNewItemProps } from "../../types/interfaces/AddNewItemProps";
+import { AddNewItemProps } from "../../interfaces/AddNewItemProps";
 
 export const AddNewItem: React.FC<AddNewItemProps> = ({ items, setItems }) => {
   const inputRefAddNewItem = useRef<HTMLInputElement>(null);

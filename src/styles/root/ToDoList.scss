@@ -1,7 +1,9 @@
 .to-do-list-wrapper {
-  margin-top: 100px;
   display: flex;
   flex-direction: column;
+  width: 640px;
+  justify-content: center;
+  align-items: center;
 
   h1 {
     color: black;
@@ -11,7 +13,7 @@
   }
 
   .field {
-    width: 591px;
+    width: 624px;
     height: 74px;
     background-color: #ffffff;
     border-radius: 1em;
@@ -19,80 +21,167 @@
 
     display: flex;
     align-items: center;
-    padding-left: 30px;
+
+    input {
+      width: 560px;
+      border: transparent;
+      outline: none;
+      font-size: 24px;
+      margin-left: 25px;
+    }
 
     &:focus-within {
       border: solid 1.6px #6034e4;
     }
   }
 
-  .to-do-item-wrapper {
-    margin-top: 20px;
-  }
+  .to-do-items-wrapper {
+    width: 640px;
+    height: 750px;
+    overflow-y: auto;
+    overflow-x: hidden;
 
-  .to-do-item {
-    margin-top: 20px;
-    width: 594px;
-    height: 106px;
-    background-color: #6034e4;
-    border-radius: 1em;
-    cursor: pointer;
-
-    display: flex;
-    align-content: center;
-    padding-left: 30px;
-  }
-
-  .to-do-item-completed {
-    background-color: #c7b5ff;
-    margin-top: 20px;
-    width: 594px;
-    height: 106px;
-    border-radius: 1em;
-    cursor: pointer;
-
-    text-decoration-line: line-through;
-    text-decoration-color: white;
-    display: flex;
-    align-content: center;
-    padding-left: 30px;
-  }
-
-  .to-do-item-flex {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  
-    h2 {
-      width: 530px;
-      color: white;
+    &::-webkit-scrollbar {
+      display: none;
     }
-  
-    .trash-icon:hover g path {
-      stroke: #fca0ff;
-      transition: all 0ms ease-in-out;
+
+    .to-do-item-wrapper {
+      margin-top: 20px;
+      width: 640px;
+      display: flex; /* Добавлено */
+      justify-content: center; /* Выравнивание по горизонтали */
+      align-items: center;
     }
-  
-    .trash-icon:hover g line {
-      stroke: #fca0ff;
-      transition: all 0ms ease-in-out;
+
+    .to-do-item {
+      width: 625.6px;
+      height: 106px;
+      background-color: #6034e4;
+      border-radius: 1em;
+      cursor: pointer;
+
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      transition: width 0.1s, height 0.1s;
+
+      &:hover {
+        width: 640px;
+        height: 110px;
+        transform: translateX(-0.1.8%);
+      }
     }
-  
-    .trash-icon:hover g polyline {
-      stroke: #fca0ff;
-      transition: all 0ms ease-in-out;
+
+    .to-do-item-completed {
+      background-color: #c7b5ff;
+      margin-top: 20px;
+      width: 625.6px;
+      height: 106px;
+      border-radius: 1em;
+      cursor: pointer;
+
+      text-decoration-line: line-through;
+      text-decoration-color: white;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+
+      transition: width 0.1s, height 0.1s;
+
+      &:hover {
+        width: 640px;
+        height: 110px;
+        transform: translateX(-0.1.8%);
+      }
+    }
+
+    .to-do-item-flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      h2 {
+        width: 536px;
+        color: white;
+        margin-right: 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .trash-icon:hover g path {
+        stroke: #fca0ff;
+        transition: all 0ms ease-in-out;
+      }
+
+      .trash-icon:hover g line {
+        stroke: #fca0ff;
+        transition: all 0ms ease-in-out;
+      }
+
+      .trash-icon:hover g polyline {
+        stroke: #fca0ff;
+        transition: all 0ms ease-in-out;
+      }
     }
   }
 
   .h1-add-new-item {
     margin-top: 60px;
   }
+}
 
-  input {
-    width: 560px;
-    border: transparent;
-    outline: none;
-    font-size: 24px;
+@media (max-width: 2400px) {
+  .to-do-list-wrapper {
+    .to-do-items-wrapper {
+      height: 650px;
+      overflow: scroll;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 }
 
+@media (max-width: 1700px) {
+  .to-do-list-wrapper {
+    .to-do-items-wrapper {
+      height: 500px;
+    }
+  }
+}
+
+@media (max-width: 1500px) {
+  .to-do-list-wrapper {
+    .to-do-items-wrapper {
+      height: 350px;
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .to-do-list-wrapper {
+    .to-do-items-wrapper {
+      height: 300px;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .to-do-list-wrapper {
+    .to-do-items-wrapper {
+      height: 180px;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .to-do-list-wrapper {
+    .to-do-items-wrapper {
+      height: 100px;
+    }
+  }
+}

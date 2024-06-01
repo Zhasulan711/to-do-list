@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { TrashIcon } from "../Icons/TrashIcon";
-import { ToDoItemWrapperProps } from "../../types/interfaces/ToDoItemWrapperProps";
+import { ToDoItemWrapperProps } from "../../interfaces/ToDoItemWrapperProps";
 
 export const ToDoItemWrapper: React.FC<ToDoItemWrapperProps> = ({
   items,
@@ -29,7 +29,7 @@ export const ToDoItemWrapper: React.FC<ToDoItemWrapperProps> = ({
   };
 
   return (
-    <>
+    <div className="to-do-items-wrapper">
       {items
         .filter((item) =>
           item.toLowerCase().includes(searchInput.toLowerCase())
@@ -57,6 +57,6 @@ export const ToDoItemWrapper: React.FC<ToDoItemWrapperProps> = ({
             </div>
           );
         })}
-    </>
+    </div>
   );
 };
