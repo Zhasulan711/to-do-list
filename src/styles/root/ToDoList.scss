@@ -1,3 +1,23 @@
+.item-common-styles {
+  width: 625.6px;
+  height: 106px;
+  border-radius: 1em;
+  cursor: pointer;
+
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: width 0.1s, height 0.1s;
+}
+
+@mixin item-hover-effect {
+  &:hover {
+    width: 640px;
+    height: 110px;
+    transform: translateX(-0.1.8%);
+  }
+}
+
 .to-do-list-wrapper {
   display: flex;
   flex-direction: column;
@@ -54,43 +74,23 @@
     }
 
     .to-do-item {
-      width: 625.6px;
-      height: 106px;
+      @extend .item-common-styles;
       background-color: #6034e4;
-      border-radius: 1em;
-      cursor: pointer;
-
-      display: flex;
-      align-content: center;
-      justify-content: center;
-      transition: width 0.1s, height 0.1s;
 
       &:hover {
-        width: 640px;
-        height: 110px;
-        transform: translateX(-0.1.8%);
+        @include item-hover-effect;
       }
     }
 
     .to-do-item-completed {
+      @extend .item-common-styles;
       background-color: #c7b5ff;
-      width: 625.6px;
-      height: 106px;
-      border-radius: 1em;
-      cursor: pointer;
 
       text-decoration-line: line-through;
       text-decoration-color: white;
-      display: flex;
-      align-content: center;
-      justify-content: center;
-
-      transition: width 0.1s, height 0.1s;
 
       &:hover {
-        width: 640px;
-        height: 110px;
-        transform: translateX(-0.1.8%);
+        @include item-hover-effect;
       }
     }
 

@@ -10,11 +10,11 @@ export const ToDoItemWrapper: React.FC<ToDoItemWrapperProps> = ({
 }) => {
   const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
 
-  const handleClickToggleClass = (index: number) => {
+  const handleClickToggleClass = (targetIndex: number) => {
     setActiveIndexes((prevIndexes) =>
-      prevIndexes.includes(index)
-        ? prevIndexes.filter((i) => i !== index)
-        : [...prevIndexes, index]
+      prevIndexes.includes(targetIndex)
+        ? prevIndexes.filter((i) => i !== targetIndex)
+        : [...prevIndexes, targetIndex]
     );
   };
 
