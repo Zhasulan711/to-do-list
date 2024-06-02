@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { TrashIcon } from "../Icons/TrashIcon";
 import { ToDoItemWrapperProps } from "../../interfaces/ToDoItemWrapperProps";
@@ -9,6 +9,14 @@ export const ToDoItemWrapper: React.FC<ToDoItemWrapperProps> = ({
   searchInput,
 }) => {
   const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
+  const [filteredItems, setFilteredItems] = useState<string[]>(items);
+
+  useEffect(() => {
+    const filtered = items.filter((item) =>
+      item.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    setFilteredItems(filtered);
+  }, [items, searchInput]);
 
   const handleClickToggleClass = (index: number) => {
     setActiveIndexes((prevIndexes) =>
@@ -30,33 +38,29 @@ export const ToDoItemWrapper: React.FC<ToDoItemWrapperProps> = ({
 
   return (
     <div className="to-do-items-wrapper">
-      {items
-        .filter((item) =>
-          item.toLowerCase().includes(searchInput.toLowerCase())
-        )
-        .map((item, index) => {
-          const isActive = activeIndexes.includes(index);
-          const ItemToggleClassState = isActive ? "-completed" : "";
+      {filteredItems.map((item, index) => {
+        const isActive = activeIndexes.includes(index);
+        const ItemToggleClassState = isActive ? "-completed" : "";
 
-          return (
-            <div key={index} className="to-do-item-wrapper">
-              <div
-                className={`to-do-item${ItemToggleClassState}`}
-                onClick={() => handleClickToggleClass(index)}
-              >
-                <div className="to-do-item-flex">
-                  <h2>{item}</h2>
-                  <TrashIcon
-                    onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => {
-                      e.stopPropagation();
-                      handleRemove(index);
-                    }}
-                  />
-                </div>
+        return (
+          <div key={index} className="to-do-item-wrapper">
+            <div
+              className={`to-do-item${ItemToggleClassState}`}
+              onClick={() => handleClickToggleClass(index)}
+            >
+              <div className="to-do-item-flex">
+                <h2>{item}</h2>
+                <TrashIcon
+                  onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => {
+                    e.stopPropagation();
+                    handleRemove(index);
+                  }}
+                />
               </div>
             </div>
-          );
-        })}
+          </div>
+        );
+      })}
     </div>
   );
 };

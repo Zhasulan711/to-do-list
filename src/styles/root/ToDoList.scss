@@ -48,8 +48,8 @@
     .to-do-item-wrapper {
       margin-top: 20px;
       width: 640px;
-      display: flex; /* Добавлено */
-      justify-content: center; /* Выравнивание по горизонтали */
+      display: flex;
+      justify-content: center;
       align-items: center;
     }
 
@@ -74,7 +74,6 @@
 
     .to-do-item-completed {
       background-color: #c7b5ff;
-      margin-top: 20px;
       width: 625.6px;
       height: 106px;
       border-radius: 1em;
@@ -135,13 +134,6 @@
   .to-do-list-wrapper {
     .to-do-items-wrapper {
       height: 650px;
-      overflow: scroll;
-      overflow-y: auto;
-      overflow-x: hidden;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
     }
   }
 }
