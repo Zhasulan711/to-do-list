@@ -130,7 +130,15 @@
   }
 }
 
-@media (max-width: 2400px) {
+@media (max-width: 3850px) {
+  .to-do-list-wrapper {
+    .to-do-items-wrapper {
+      height: 1200px;
+    }
+  }
+}
+
+@media (max-width: 2550px) {
   .to-do-list-wrapper {
     .to-do-items-wrapper {
       height: 650px;
@@ -138,7 +146,7 @@
   }
 }
 
-@media (max-width: 1700px) {
+@media (max-width: 1930px) {
   .to-do-list-wrapper {
     .to-do-items-wrapper {
       height: 500px;
@@ -146,7 +154,15 @@
   }
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1660px) {
+  .to-do-list-wrapper {
+    .to-do-items-wrapper {
+      height: 400px;
+    }
+  }
+}
+
+@media (max-width: 1530px) {
   .to-do-list-wrapper {
     .to-do-items-wrapper {
       height: 350px;
@@ -157,7 +173,7 @@
 @media (max-width: 1280px) {
   .to-do-list-wrapper {
     .to-do-items-wrapper {
-      height: 300px;
+      height: 250px;
     }
   }
 }
@@ -165,7 +181,7 @@
 @media (max-width: 1100px) {
   .to-do-list-wrapper {
     .to-do-items-wrapper {
-      height: 180px;
+      height: 120px;
     }
   }
 }
@@ -173,7 +189,49 @@
 @media (max-width: 850px) {
   .to-do-list-wrapper {
     .to-do-items-wrapper {
-      height: 100px;
+      height: 115px;
+    }
+
+    .h1-add-new-item {
+      margin-top: 0px;
+    }
+
+    h1 {
+      margin-top: -10px;
+    }
+  }
+}
+
+@mixin item-hover-effect-640px {
+  &:hover {
+    width: 626px;
+    height: 50px;
+    transform: translateX(0%);
+  }
+}
+
+@media (max-width: 640px) {
+  .to-do-list-wrapper {
+    .to-do-items-wrapper {
+      height: 60px;
+    }
+
+    .h1-add-new-item {
+      margin-top: 0px;
+    }
+
+    h1 {
+      margin-top: -10px;
+    }
+    .to-do-items-wrapper {
+      .to-do-item {
+        height: 50px;
+        transition: width 0s, height 0s;
+
+        &:hover {
+          @include item-hover-effect-640px;
+        }
+      }
     }
   }
 }
