@@ -4,7 +4,7 @@ import "../../styles/root/ToDoList.scss";
 
 import { SearchText } from "./SearchText";
 import { AddNewItem } from "./AddNewItem";
-import { ToDoItemWrapper } from "./ToDoItemWrapper";
+import { ItemWrapper } from "./ItemWrapper";
 
 export const ToDoListWrapper = () => {
   const [items, setItems] = useState<string[]>([]);
@@ -22,7 +22,7 @@ export const ToDoListWrapper = () => {
     <div className="to-do-list-wrapper">
       <SearchText setSearchInput={setSearchInput} />
 
-      <ToDoItemWrapper
+      <ItemWrapper
         items={items}
         setItems={setItems}
         searchInput={searchInput}

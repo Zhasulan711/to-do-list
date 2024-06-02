@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import { TrashIcon } from "../Icons/TrashIcon";
-import { ToDoItemWrapperProps } from "../../interfaces/ToDoItemWrapperProps";
+import { ItemWrapperProps } from "../../interfaces/ItemWrapperProps";
 
-export const ToDoItemWrapper: React.FC<ToDoItemWrapperProps> = ({
+export const ItemWrapper: React.FC<ItemWrapperProps> = ({
   items,
   setItems,
   searchInput,
