@@ -11,9 +11,16 @@ export const AddNewItem: React.FC<AddNewItemProps> = ({ items, setItems }) => {
     }
   };
 
+  // Add item when the "Enter" key is pressed
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && e.currentTarget.value.trim() !== "") {
-      setItems([...items, e.currentTarget.value.trim()]);
+      const value = e.currentTarget.value.trim();
+      // Update state with item added
+      setItems([...items, value]);
+
+      // Add item to localStorage
+      localStorage.setItem("item", JSON.stringify([...items, value]));
+
       e.currentTarget.value = "";
     } else {
       return null;

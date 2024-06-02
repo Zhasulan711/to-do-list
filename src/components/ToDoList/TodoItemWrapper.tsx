@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { TrashIcon } from "../Icons/TrashIcon";
 import { ToDoItemWrapperProps } from "../../interfaces/ToDoItemWrapperProps";
@@ -10,22 +10,77 @@ export const ToDoItemWrapper: React.FC<ToDoItemWrapperProps> = ({
 }) => {
   const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
 
-  const handleClickToggleClass = (targetIndex: number) => {
-    setActiveIndexes((prevIndexes) =>
-      prevIndexes.includes(targetIndex)
-        ? prevIndexes.filter((i) => i !== targetIndex)
-        : [...prevIndexes, targetIndex]
+  // Get activeIndexes from localStorage
+  useEffect(() => {
+    const localStorageActiveIndexes = JSON.parse(
+      localStorage.getItem("activeIndexes") || "[]"
     );
+
+    setActiveIndexes(localStorageActiveIndexes);
+  }, []);
+
+  const handleClickToggleClass = (targetIndex: number) => {
+    setActiveIndexes((prevIndexes) => {
+      if (prevIndexes.includes(targetIndex)) {
+        // Remove active indexes from localStorage
+        const localStorageActiveIndexes = JSON.parse(
+          localStorage.getItem("activeIndexes") || "[]"
+        );
+        const removingLocalStorageActiveIndexes =
+          localStorageActiveIndexes.filter(
+            (index: number) => index !== targetIndex
+          );
+        localStorage.setItem(
+          "activeIndexes",
+          JSON.stringify(removingLocalStorageActiveIndexes)
+        );
+
+        // Update state with active indexes removed
+        return prevIndexes.filter((i) => i !== targetIndex);
+      } else {
+        // Add active indexes to localStorage
+        localStorage.setItem(
+          "activeIndexes",
+          JSON.stringify([...activeIndexes, targetIndex])
+        );
+
+        // Update state with active indexes added
+        return [...prevIndexes, targetIndex];
+      }
+    });
   };
 
   const handleRemove = (targetIndex: number) => {
-    const updatedIndexes = items.filter((item, index) => index !== targetIndex);
-    setItems(updatedIndexes);
+    // Update state with items removed
+    const updatedItems = items.filter((item, index) => index !== targetIndex);
+    setItems(updatedItems);
 
+    // Update state with active indexes removed
     const updatedActiveIndexes = activeIndexes.filter(
       (index) => index !== targetIndex
     );
     setActiveIndexes(updatedActiveIndexes);
+
+    // Remove item from localStorage
+    const initialItems = ["Swimming pool"];
+    const localStorageItems = JSON.parse(localStorage.getItem("item") || JSON.stringify(initialItems));
+    const removingLocalStorageItem = localStorageItems.filter(
+      (item: string, index: number) => index !== targetIndex
+    );
+
+    localStorage.setItem("item", JSON.stringify(removingLocalStorageItem));
+
+    // Remove activity indexes from localStorage
+    const localStorageActiveIndexes = JSON.parse(
+      localStorage.getItem("activeIndexes") || "[]"
+    );
+    const removingLocalStorageActiveIndexes = localStorageActiveIndexes.filter(
+      (index: number) => index !== targetIndex
+    );
+    localStorage.setItem(
+      "activeIndexes",
+      JSON.stringify(removingLocalStorageActiveIndexes)
+    );
   };
 
   return (
