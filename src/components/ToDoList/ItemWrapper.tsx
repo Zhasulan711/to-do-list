@@ -95,10 +95,11 @@ export const ItemWrapper: React.FC<ItemWrapperProps> = ({
           const ItemToggleClassState = isActive ? "-completed" : "";
 
           return (
-            <div key={index} className="to-do-item-wrapper">
+            <div>
               <div
                 className={`to-do-item${ItemToggleClassState}`}
                 onClick={() => handleClickToggleClass(originalIndex)}
+                key={index}
               >
                 <div className="to-do-item-flex">
                   <h2>{item}</h2>

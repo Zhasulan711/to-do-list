@@ -1,13 +1,44 @@
 .item-common-styles {
+  margin-top: 20px;
   width: 625.6px;
   height: 106px;
   border-radius: 1em;
   cursor: pointer;
 
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: center;
   transition: width 0.1s, height 0.1s;
+}
+
+.to-do-item-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  h2 {
+    width: 536px;
+    color: white;
+    margin-right: 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .trash-icon:hover g path {
+    stroke: #fca0ff;
+    transition: all 0ms ease-in-out;
+  }
+
+  .trash-icon:hover g line {
+    stroke: #fca0ff;
+    transition: all 0ms ease-in-out;
+  }
+
+  .trash-icon:hover g polyline {
+    stroke: #fca0ff;
+    transition: all 0ms ease-in-out;
+  }
 }
 
 @mixin item-hover-effect {
@@ -15,6 +46,21 @@
     width: 640px;
     height: 110px;
     transform: translateX(-0.1.8%);
+  }
+}
+
+@mixin item-hover-effect-640px {
+  &:hover {
+    width: 626px;
+    height: 50px;
+    transform: translateX(0%);
+  }
+}
+
+@mixin item-hover-effect-440px {
+  &:hover {
+    width: 310px;
+    height: 74px;
   }
 }
 
@@ -60,17 +106,12 @@
     height: 750px;
     overflow-y: auto;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &::-webkit-scrollbar {
       display: none;
-    }
-
-    .to-do-item-wrapper {
-      margin-top: 20px;
-      width: 640px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     .to-do-item {
@@ -80,6 +121,8 @@
       &:hover {
         @include item-hover-effect;
       }
+
+      @extend .to-do-item-flex;
     }
 
     .to-do-item-completed {
@@ -89,44 +132,24 @@
       text-decoration-line: line-through;
       text-decoration-color: white;
 
+      @extend .to-do-item-flex;
+
       &:hover {
         @include item-hover-effect;
-      }
-    }
-
-    .to-do-item-flex {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      h2 {
-        width: 536px;
-        color: white;
-        margin-right: 0px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-      }
-
-      .trash-icon:hover g path {
-        stroke: #fca0ff;
-        transition: all 0ms ease-in-out;
-      }
-
-      .trash-icon:hover g line {
-        stroke: #fca0ff;
-        transition: all 0ms ease-in-out;
-      }
-
-      .trash-icon:hover g polyline {
-        stroke: #fca0ff;
-        transition: all 0ms ease-in-out;
       }
     }
   }
 
   .h1-add-new-item {
     margin-top: 60px;
+  }
+}
+
+@media (max-width: 5200px) {
+  .to-do-list-wrapper {
+    .to-do-items-wrapper {
+      height: 1800px;
+    }
   }
 }
 
@@ -202,20 +225,8 @@
   }
 }
 
-@mixin item-hover-effect-640px {
-  &:hover {
-    width: 626px;
-    height: 50px;
-    transform: translateX(0%);
-  }
-}
-
 @media (max-width: 640px) {
   .to-do-list-wrapper {
-    .to-do-items-wrapper {
-      height: 60px;
-    }
-
     .h1-add-new-item {
       margin-top: 0px;
     }
@@ -224,6 +235,7 @@
       margin-top: -10px;
     }
     .to-do-items-wrapper {
+      height: 60px;
       .to-do-item {
         height: 50px;
         transition: width 0s, height 0s;
@@ -232,6 +244,69 @@
           @include item-hover-effect-640px;
         }
       }
+
+      .to-do-item-completed {
+        height: 50px;
+        transition: width 0s, height 0s;
+
+        &:hover {
+          @include item-hover-effect-640px;
+        }
+      }
+    }
+  }
+}
+
+// mobile responsive design
+@media (max-width: 440px) {
+  .to-do-list-wrapper {
+    width: 325px;
+
+    .to-do-items-wrapper {
+      height: 380px;
+      width: 325px;
+
+      .to-do-item {
+        width: 300px;
+        height: 70px;
+
+        &:hover {
+          @include item-hover-effect-440px;
+        }
+
+        .to-do-item-flex {
+          h2 {
+            width: 235px;
+          }
+        }
+      }
+
+      .to-do-item-completed {
+        width: 300px;
+        height: 70px;
+
+        &:hover {
+          @include item-hover-effect-440px;
+        }
+
+        .to-do-item-flex {
+          h2 {
+            width: 235px;
+          }
+        }
+      }
+    }
+
+    .field {
+      width: 300px;
+
+      input {
+        width: 236px;
+      }
+    }
+
+    .h1-add-new-item {
+      margin-top: 20px;
     }
   }
 }
