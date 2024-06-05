@@ -13,12 +13,12 @@ export const ToDoListWrapper = () => {
   // Get items from localStorage
   useEffect(() => {
     const initialItems = ["Swimming pool"];
-    const localStorageItems = JSON.parse(localStorage.getItem("item") || JSON.stringify(initialItems));
+    const localStorageItems = JSON.parse(
+      localStorage.getItem("item") || JSON.stringify(initialItems)
+    );
 
     setItems(localStorageItems);
   }, []);
-
-  console.log(items);
 
   return (
     <div className="to-do-list-wrapper">

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import { TrashIcon } from "../Icons/TrashIcon";
-import { ItemWrapperProps } from "../../interfaces/ItemWrapperProps";
-import { removeLocalStorageItem } from "../../utils/storageUtils";
+import { ItemWrapperProps } from "../../shared/interfaces/ItemWrapperProps";
+import { removeLocalStorageItem } from "../../shared/util/removeStorageItem";
 
 export const ItemWrapper: React.FC<ItemWrapperProps> = ({
   items,
@@ -58,8 +58,6 @@ export const ItemWrapper: React.FC<ItemWrapperProps> = ({
     // Remove activity indexes from localStorage
     removeLocalStorageItem("activeIndexes", targetIndex, 3);
   };
-
-  console.log(activeIndexes)
 
   return (
     <div className="to-do-items-wrapper">

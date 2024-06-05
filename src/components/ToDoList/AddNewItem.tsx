@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import { AddNewItemProps } from "../../interfaces/AddNewItemProps";
+import { AddNewItemProps } from "../../shared/interfaces/AddNewItemProps";
 
 export const AddNewItem: React.FC<AddNewItemProps> = ({ items, setItems }) => {
   const inputRefAddNewItem = useRef<HTMLInputElement>(null);
@@ -18,7 +18,7 @@ export const AddNewItem: React.FC<AddNewItemProps> = ({ items, setItems }) => {
       if (!items.includes(value)) {
         // Update state with item added
         setItems([...items, value]);
-        
+
         // Add item to localStorage
         localStorage.setItem("item", JSON.stringify([...items, value]));
       }
