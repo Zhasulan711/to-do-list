@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { TrashIcon } from "../Icons/TrashIcon";
 import { ItemWrapperProps } from "../../interfaces/ItemWrapperProps";
+import { removeLocalStorageItem } from "../../utils/storageUtils";
 
 export const ItemWrapper: React.FC<ItemWrapperProps> = ({
   items,
@@ -23,17 +24,7 @@ export const ItemWrapper: React.FC<ItemWrapperProps> = ({
     setActiveIndexes((prevIndexes) => {
       if (prevIndexes.includes(targetIndex)) {
         // Remove active indexes from localStorage
-        const localStorageActiveIndexes = JSON.parse(
-          localStorage.getItem("activeIndexes") || "[]"
-        );
-        const removingLocalStorageActiveIndexes =
-          localStorageActiveIndexes.filter(
-            (index: number) => index !== targetIndex
-          );
-        localStorage.setItem(
-          "activeIndexes",
-          JSON.stringify(removingLocalStorageActiveIndexes)
-        );
+        removeLocalStorageItem("activeIndexes", targetIndex, 1);
 
         // Update state with active indexes removed
         return prevIndexes.filter((i) => i !== targetIndex);
@@ -56,32 +47,19 @@ export const ItemWrapper: React.FC<ItemWrapperProps> = ({
     setItems(updatedItems);
 
     // Update state with active indexes removed
-    const updatedActiveIndexes = activeIndexes.filter(
-      (index) => index !== targetIndex
-    );
+    const updatedActiveIndexes = activeIndexes
+      .filter((index) => index !== targetIndex)
+      .map((index) => (index > targetIndex ? index - 1 : index));
     setActiveIndexes(updatedActiveIndexes);
 
     // Remove item from localStorage
-    const initialItems = ["Swimming pool"];
-    const localStorageItems = JSON.parse(localStorage.getItem("item") || JSON.stringify(initialItems));
-    const removingLocalStorageItem = localStorageItems.filter(
-      (item: string, index: number) => index !== targetIndex
-    );
-
-    localStorage.setItem("item", JSON.stringify(removingLocalStorageItem));
+    removeLocalStorageItem("item", targetIndex, 2);
 
     // Remove activity indexes from localStorage
-    const localStorageActiveIndexes = JSON.parse(
-      localStorage.getItem("activeIndexes") || "[]"
-    );
-    const removingLocalStorageActiveIndexes = localStorageActiveIndexes.filter(
-      (index: number) => index !== targetIndex
-    );
-    localStorage.setItem(
-      "activeIndexes",
-      JSON.stringify(removingLocalStorageActiveIndexes)
-    );
+    removeLocalStorageItem("activeIndexes", targetIndex, 3);
   };
+
+  console.log(activeIndexes)
 
   return (
     <div className="to-do-items-wrapper">
@@ -95,11 +73,10 @@ export const ItemWrapper: React.FC<ItemWrapperProps> = ({
           const ItemToggleClassState = isActive ? "-completed" : "";
 
           return (
-            <div>
+            <div key={originalIndex}>
               <div
                 className={`to-do-item${ItemToggleClassState}`}
                 onClick={() => handleClickToggleClass(originalIndex)}
-                key={index}
               >
                 <div className="to-do-item-flex">
                   <h2>{item}</h2>

@@ -18,6 +18,8 @@ export const ToDoListWrapper = () => {
     setItems(localStorageItems);
   }, []);
 
+  console.log(items);
+
   return (
     <div className="to-do-list-wrapper">
       <SearchText setSearchInput={setSearchInput} />
