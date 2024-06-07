@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import { TrashIcon } from "../Icons/TrashIcon";
-import { ItemWrapperProps } from "../../shared/interfaces/ItemWrapperProps";
-import { removeLocalStorageItem } from "../../shared/util/removeStorageItem";
+import { TrashIcon } from "../Icon";
+import { ItemWrapperProps } from "../../shared/interfaces";
+import { removeLocalStorageItem } from "../../shared/util";
 
 export const ItemWrapper: React.FC<ItemWrapperProps> = ({
   items,

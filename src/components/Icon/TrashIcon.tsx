@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { DefaultIconComponentProps } from "../../shared/types/DefaultIconComponentProps";
+import { DefaultIconComponentProps } from "../../shared/type";
 
 export const TrashIcon: FC<DefaultIconComponentProps> = ({
   width = 34,

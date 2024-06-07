@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-import { SearchTextProps } from "../../shared/interfaces/SearchTextProps";
+import { SearchTextProps } from "../../shared/interfaces";
 
 export const SearchText: React.FC<SearchTextProps> = ({ setSearchInput }) => {
   const [searchInputValue, setSearchInputValue] = useState<string>("");
